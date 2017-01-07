@@ -120,3 +120,6 @@ md-sidenav-layout.m2app-dark {
 .input-full-width{
   width:100%;
 }
+.viewport > canvas {
+  position: absolute;
+}

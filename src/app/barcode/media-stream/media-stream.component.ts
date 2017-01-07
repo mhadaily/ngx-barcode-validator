@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges, OnDestroy, ViewChild, AfterContentInit } from '@angular/core';
 declare const Quagga: any;
 
 @Component({
@@ -6,10 +6,12 @@ declare const Quagga: any;
   templateUrl: './media-stream.component.html',
   styleUrls: ['./media-stream.component.scss']
 })
-export class MediaStreamComponent implements OnInit,OnChanges,OnDestroy {
+export class MediaStreamComponent implements OnInit,OnChanges,OnDestroy,AfterContentInit {
   
-  private lastResult = "No Changes";
+  lastResult = "No Changes";
   
+  @ViewChild('interactive') interactive;
+    
   ngOnChanges (changes: SimpleChanges) {
     if (changes['lastResult']) {
        console.log(this.lastResult);
@@ -101,6 +103,10 @@ export class MediaStreamComponent implements OnInit,OnChanges,OnDestroy {
   logCode (result) {
      this.lastResult = result.codeResult.code;
      console.log(result);
+  }
+  
+  ngAfterContentInit(){
+    this.interactive.nativeElement.children[0].style.position = 'absolute';
   }
   
   ngOnDestroy(){

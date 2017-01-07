@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { DomSanitizer } from "@angular/platform-browser";
+import { ValidateBarcodeService } from "../../validate-barcode.service";
 
 declare const Quagga: any;
 
@@ -16,8 +17,9 @@ export class InputFieldComponent implements OnInit,OnDestroy {
   config: any;
   resultUrl: any;
   codeNumber: string;
+  resultCode: any;
   
-  constructor (private sanitizer: DomSanitizer) { }
+  constructor (private sanitizer: DomSanitizer, private validateBarcode: ValidateBarcodeService) { }
   
   ngOnInit () {
     this.config = {
@@ -45,6 +47,7 @@ export class InputFieldComponent implements OnInit,OnDestroy {
       let code = result.codeResult.code;
       this.isbn.nativeElement.value = code;
       this.codeNumber = code;
+      this.validate(code);
     });
   }
   
@@ -62,6 +65,11 @@ export class InputFieldComponent implements OnInit,OnDestroy {
       const file = URL.createObjectURL(e.target.files[0]);
       this.decode(this.setResultUrl(file));
     }
+  }
+  
+  validate(code){
+    this.validateBarcode.doSearchByCode(code)
+      .subscribe(code=> this.resultCode = code)
   }
   
   ngOnDestroy () {

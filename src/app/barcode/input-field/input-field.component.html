@@ -5,7 +5,12 @@
 <input type="file" accept="image/*" capture="camera" (change)="onChange($event)">
 
 
-    <div class="thumbnail" *ngIf="codeNumber">
-      <div class="imgWrapper"><img [src]="resultUrl"></div>
-      <div class="caption"><h4 class="code">{{codeNumber}}</h4></div>
-    </div>
+<div class="thumbnail" *ngIf="codeNumber">
+  <div class="imgWrapper"><img [src]="resultUrl"></div>
+  <div class="caption"><h4 class="code">{{codeNumber}}</h4></div>
+</div>
+
+
+<h3 *ngIf="resultCode">
+  {{resultCode}}
+</h3>

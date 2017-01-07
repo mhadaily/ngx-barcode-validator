@@ -1,4 +1,7 @@
-<h3>The user's camera</h3>
-<p>{{ lastResult }}</p>
+{{title}}
+<nav>
+  <button [routerLinkActive]="['active']" [routerLink]="['media']">Media Stream</button>
+  <button [routerLinkActive]="['active']" [routerLink]="['field']">FILED</button>
+</nav>
 
-<div id="interactive" class="viewport"></div>
+<router-outlet></router-outlet>

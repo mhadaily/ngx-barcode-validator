@@ -21,7 +21,7 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/quagga/dist/quagga.min.js"
+        "../src/vendor/quagga.min.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

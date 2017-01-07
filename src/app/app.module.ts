@@ -11,6 +11,8 @@ import { DialogContentComponent } from './material2/dialog-content/dialog-conten
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BarcodeComponent } from './barcode/barcode.component';
 import { HomeComponent } from './home/home.component';
+import { MediaStreamComponent } from './barcode/media-stream/media-stream.component';
+import { InputFieldComponent } from './barcode/input-field/input-field.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HomeComponent } from './home/home.component';
     DialogContentComponent,
     NotFoundComponent,
     BarcodeComponent,
-    HomeComponent
+    HomeComponent,
+    MediaStreamComponent,
+    InputFieldComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<br/><br/>
+
+<label for="isbn_input">EAN:</label>
+<input id="isbn_input" class="isbn" type="text" #isbn>
+<input type="file" accept="image/*" capture="camera" (change)="onChange($event)">
+
+
+    <div class="thumbnail" *ngIf="codeNumber">
+      <div class="imgWrapper"><img [src]="resultUrl"></div>
+      <div class="caption"><h4 class="code">{{codeNumber}}</h4></div>
+    </div>

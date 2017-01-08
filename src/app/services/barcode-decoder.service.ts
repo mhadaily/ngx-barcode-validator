@@ -15,11 +15,10 @@ export class BarcodeDecoderService {
     // Promisify DecodeSingle method from Quagga
     return new Promise((resolve, reject) => {
       Quagga.decodeSingle(DECODER_CONFIG, result => {
-        const code = result.codeResult.code;
-        if (!code) {
-          reject('Cannot be Detected, Please Try again!');
+        if (result) {
+          resolve(result.codeResult.code);
         }
-        resolve(code);
+        reject('File Cannot be Decode, Please Try a Valid Barcode;');
       });
     });
   }

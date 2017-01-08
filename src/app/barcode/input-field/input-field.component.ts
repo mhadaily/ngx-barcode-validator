@@ -3,9 +3,6 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { ValidateBarcodeService } from "../../services/validate-barcode.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
 
-
-declare const Quagga: any;
-
 @Component({
   selector: 'app-input-field',
   templateUrl: './input-field.component.html',
@@ -18,7 +15,9 @@ export class InputFieldComponent implements OnDestroy {
   resultUrl: any;
   resultCode: any;
   
-  constructor (private sanitizer: DomSanitizer, private validateBarcode: ValidateBarcodeService, private decode: BarcodeDecoderService) { }
+  constructor ( private sanitizer: DomSanitizer,
+                private validateBarcode: ValidateBarcodeService,
+                private decoderService: BarcodeDecoderService) { }
   
   sanitize (url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
@@ -35,10 +34,10 @@ export class InputFieldComponent implements OnDestroy {
     }
     const file = URL.createObjectURL(e.target.files[0]);
     
-    this.decode.onDecodeSingle(this.setResultUrl(file))
+    this.decoderService.onDecodeSingle(this.setResultUrl(file))
         .then(code => {
           this.isbn.nativeElement.value = code;
-          this.decode.onPlaySound();
+          this.decoderService.onPlaySound();
           this.validate(code);
         })
         .catch(e => console.error(e));
@@ -50,7 +49,7 @@ export class InputFieldComponent implements OnDestroy {
   }
   
   ngOnDestroy () {
-    console.log('stopped')
+    console.info('Stopped!')
   }
   
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterContentInit, DoCheck } from '@angular/core';
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
-declare const Quagga: any;
 
 @Component({
   selector: 'app-media-stream',
@@ -13,20 +12,20 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   
   @ViewChild('interactive') interactive;
   
-  constructor (private decode: BarcodeDecoderService) {};
+  constructor (private decoderService: BarcodeDecoderService) {};
   
   ngDoCheck () {
-    this.decode.onDecodeDetected()
+    this.decoderService.onDecodeDetected()
         .then(code => {
           this.lastResult = code;
-          this.decode.onPlaySound();
+          this.decoderService.onPlaySound();
         })
         .catch((err) => console.error(err));
   }
   
   ngOnInit () {
-    this.decode.onLiveStreamInit();
-    this.decode.onDecodeProcessed();
+    this.decoderService.onLiveStreamInit();
+    this.decoderService.onDecodeProcessed();
   }
   
   ngAfterContentInit () {
@@ -34,7 +33,7 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   }
   
   ngOnDestroy () {
-    this.decode.onDecodeStop();
+    this.decoderService.onDecodeStop();
   }
   
 }

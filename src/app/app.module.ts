@@ -15,6 +15,7 @@ import { BarcodeDecoderService } from "./services/barcode-decoder.service";
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { FabMenuComponent } from './shared/fab-menu/fab-menu.component';
+import { InstantSearchComponent } from './barcode/instant-search/instant-search.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FabMenuComponent } from './shared/fab-menu/fab-menu.component';
     InputFieldComponent,
     ToolbarComponent,
     SidenavComponent,
-    FabMenuComponent
+    FabMenuComponent,
+    InstantSearchComponent
   ],
   imports: [
     BrowserModule,

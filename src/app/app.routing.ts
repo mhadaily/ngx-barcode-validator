@@ -9,7 +9,12 @@ const APP_ROUTES: Routes = [
   
   {
     path: '',
-    redirectTo: '/barcode',
+    redirectTo: '/barcode/search',
+    pathMatch: 'full'
+  },
+  {
+    path: 'barcode',
+    redirectTo: '/barcode/search',
     pathMatch: 'full'
   },
   {

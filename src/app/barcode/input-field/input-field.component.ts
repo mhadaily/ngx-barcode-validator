@@ -1,5 +1,4 @@
 import { Component, ViewChild, OnDestroy } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
 import { DomSanitizer } from "@angular/platform-browser";
 import { ValidateBarcodeService } from "../../services/validate-barcode.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";

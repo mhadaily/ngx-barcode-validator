@@ -29,9 +29,13 @@
 
     <div class="flex-container" fxLayout="column">
 
-      <div class="thumbnail flex-item" *ngIf="resultCode">
+      <div class="thumbnail flex-item show__sm" *ngIf="resultCode">
         <div class="imgWrapper text-center"><img class="responsive-img" [src]="resultUrl"></div>
         <div class="caption text-center"><h3 class="code">{{resultCode}}</h3></div>
+        <md-spinner class="smaller app-spinner" *ngIf="!message"></md-spinner>
+        <div class="flex-item" *ngIf="message">
+          {{message}}
+        </div>
       </div>
 
       <md-progress-bar *ngIf="startProgress"
@@ -45,7 +49,7 @@
     </div>
   </md-card>
 
-  <md-card class="flex-item app-input-section" fxFlex="50" *ngIf="resultCode">
+  <md-card class="flex-item app-input-section hidden__sm" fxFlex="50" *ngIf="resultCode">
 
     <div class="container">
       <div class="tab"></div>

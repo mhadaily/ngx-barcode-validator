@@ -23,14 +23,15 @@
   -webkit-font-smoothing: antialiased;
 }
 
-body{
-  margin:0px;
-  padding:0px;
+body {
+  margin: 0px;
+  padding: 0px;
 }
+
 @import '~@angular/material/core/theming/all-theme';
 @include md-core();
 $primary: md-palette($md-deep-purple);
-$accent:  md-palette($md-amber, A200, A100, A400);
+$accent: md-palette($md-amber, A200, A100, A400);
 
 $theme: md-light-theme($primary, $accent);
 
@@ -38,8 +39,8 @@ $theme: md-light-theme($primary, $accent);
 
 .m2app-dark {
   $dark-primary: md-palette($md-pink, 700, 500, 900);
-  $dark-accent:  md-palette($md-blue-grey, A200, A100, A400);
-  $dark-warn:    md-palette($md-deep-orange);
+  $dark-accent: md-palette($md-blue-grey, A200, A100, A400);
+  $dark-warn: md-palette($md-deep-orange);
 
   $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
@@ -103,7 +104,7 @@ md-sidenav-layout.m2app-dark {
   height: 30px;
   width: 30px;
   display: inline-block;
-  &.smaller{
+  &.smaller {
     height: 20px;
     width: 20px;
   }
@@ -122,34 +123,43 @@ md-sidenav-layout.m2app-dark {
 .app-progress {
   margin: 0px;
 }
-.input-full-width{
-  width:100%;
+
+.input-full-width {
+  width: 100%;
 }
+
 .viewport > canvas {
   position: inherit;
   width: 100% !important;
   z-index: 99;
 }
+
 .viewport > video {
   width: 100% !important;
 }
-.app-content{
-  height:100vh;
+
+.app-content {
+  height: 100vh;
 }
-.flex-item{
+
+.flex-item {
   padding-bottom: 10px;
 }
-.text-center{
+
+.text-center {
   text-align: center;
 }
-.responsive-img{
+
+.responsive-img {
   max-width: 100%;
-  max-height:100px;
+  max-height: 100px;
 }
-.small-img{
+
+.small-img {
   max-width: 100px;
   height: 40px;
 }
+
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -158,20 +168,42 @@ md-sidenav-layout.m2app-dark {
   clear: both;
   height: 0;
 }
-.clearfix { display: inline-block; }
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
 
-.viewport{
+.clearfix {
+  display: inline-block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+.clearfix {
+  display: block;
+}
+
+.viewport {
   position: relative;
 }
 
-.instantInput{
+.instantInput {
   border: 0;
-  padding:15px;
+  padding: 15px;
   width: 96%;
   font-size: 22px;
-  &:focus{
-    border:0;
+  &:focus {
+    border: 0;
+  }
+}
+
+.show__sm {
+  display:  none;
+}
+
+@media all and (max-width: 730px) {
+  .hidden__sm {
+    display: none;
+  }
+  .show__sm {
+    display: block;
   }
 }

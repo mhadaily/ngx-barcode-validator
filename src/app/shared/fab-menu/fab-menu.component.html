@@ -1,3 +1,8 @@
 <span class="app-action" [class.m2app-dark]="isDarkTheme">
-  <button md-fab><md-icon>check circle</md-icon></button>
+   <div class="flex-container" fxLayout="column">
+     <div class="flex-item" [@list1] *ngIf="active" [routerLink]="['barcode']"><button md-fab><md-icon>home</md-icon></button></div>
+     <div class="flex-item" [@list2] *ngIf="active" [routerLink]="['barcode/field']"><button md-fab><md-icon>file_upload</md-icon></button></div>
+     <div class="flex-item" [@list3] *ngIf="active" [routerLink]="['barcode/media']"><button md-fab><md-icon>camera</md-icon></button></div>
+     <div class="flex-item"><button md-fab (click)="onClick()"><md-icon>menu</md-icon></button></div>
+   </div>
 </span>

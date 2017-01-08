@@ -89,6 +89,7 @@ md-sidenav-layout.m2app-dark {
   padding: 0;
   text-align: left;
   text-decoration: none;
+  z-index: 99;
 }
 
 .app-action {
@@ -115,7 +116,7 @@ md-sidenav-layout.m2app-dark {
 }
 
 .app-progress {
-  margin: 20px;
+  margin: 0px;
 }
 .input-full-width{
   width:100%;
@@ -125,4 +126,18 @@ md-sidenav-layout.m2app-dark {
 }
 .app-content{
   height:100vh;
+}
+.flex-item{
+  padding-bottom: 10px;
+}
+.text-center{
+  text-align: center;
+}
+.responsive-img{
+  max-width: 100%;
+  max-height:100px;
+}
+.small-img{
+  max-width: 100px;
+  height: 40px;
 }

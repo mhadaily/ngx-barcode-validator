@@ -11,9 +11,11 @@ import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
 export class InputFieldComponent implements OnDestroy {
   
   @ViewChild('isbn') isbn;
+  @ViewChild('fileInputbox') fileInputbox;
   
   resultUrl: any;
   resultCode: any;
+  startProgress: boolean = false;
   
   constructor(private sanitizer: DomSanitizer,
               private validatorService: BarcodeValidatorService,
@@ -28,6 +30,10 @@ export class InputFieldComponent implements OnDestroy {
     return url;
   }
   
+  setStartProgress() {
+    this.startProgress = !this.startProgress;
+  }
+  
   onChange(e) {
     if (!e.target.files && !e.target.files.length) {
       throw new Error('cannot find uploaded file;');
@@ -36,16 +42,27 @@ export class InputFieldComponent implements OnDestroy {
     
     this.decoderService.onDecodeSingle(this.setResultUrl(file))
         .then(code => {
-          this.isbn.nativeElement.value = code;
+          this.isbn.value = code;
           this.decoderService.onPlaySound();
           this.validate(code);
+          this.resultCode = code;
+          this.setStartProgress();
         })
-        .catch(e => console.error(e));
+        .catch(e => {
+          this.setStartProgress();
+          console.log(e);
+        });
   }
+  
+  onClick() {
+    this.setStartProgress();
+    this.fileInputbox.nativeElement.click();
+  }
+  
   
   validate(code) {
     this.validatorService.doSearchByCode(code)
-        .subscribe(code => this.resultCode = code)
+        .subscribe(code => console.log(code))
   }
   
   ngOnDestroy() {

@@ -22,7 +22,12 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {
     
     this.barcodeValidator.doSearchbyCode(this.code$)
-        .subscribe(results => this.message = results);
+        .subscribe(
+          res => this.message = res,
+          err => {
+            this.message = `An Error! ${err.json().error}`
+          }
+        );
     
   };
   

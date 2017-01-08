@@ -2,6 +2,7 @@ import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
 import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
+import { Subject } from "rxjs/Subject";
 
 @Component({
   selector: 'app-input-field',
@@ -17,10 +18,24 @@ export class InputFieldComponent implements OnDestroy {
   resultCode: any;
   startProgress: boolean = false;
   error: any;
+  message: string;
+  
+  code$ = new Subject<any>();
+  
   
   constructor(private sanitizer: DomSanitizer,
-              private validatorService: BarcodeValidatorService,
-              private decoderService: BarcodeDecoderService) { }
+              private barcodeValidator: BarcodeValidatorService,
+              private decoderService: BarcodeDecoderService) {
+    
+    this.barcodeValidator.doSearchbyCode(this.code$)
+        .subscribe(
+          res => this.message = res,
+          err => {
+            this.message = `An Error! ${err.json().error}`
+          }
+        );
+    
+  }
   
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
@@ -40,9 +55,9 @@ export class InputFieldComponent implements OnDestroy {
     this.decoderService.onDecodeSingle(this.setResultUrl(file))
         .then(code => {
           this.isbn.value = code;
-          this.decoderService.onPlaySound();
-          this.validate(code);
           this.resultCode = code;
+          this.decoderService.onPlaySound();
+          this.code$.next(code);
           this.setStartProgress();
         })
         .catch(e => {
@@ -51,7 +66,7 @@ export class InputFieldComponent implements OnDestroy {
         });
   }
   
-  onCancel(e){
+  onCancel(e) {
     this.setStartProgress();
     this.error = `Something is wrong: Please Select An Image`;
   }
@@ -60,11 +75,6 @@ export class InputFieldComponent implements OnDestroy {
     this.setStartProgress();
     this.fileInputbox.nativeElement.click();
     this.error = null;
-  }
-  
-  validate(code) {
-    this.validatorService.doSearchByCode(code)
-        .subscribe(res => console.log(res,1))
   }
   
   ngOnDestroy() {

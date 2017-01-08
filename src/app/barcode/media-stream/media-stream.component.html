@@ -1,27 +1,28 @@
-<h3>The user's camera</h3>
-<p>{{ lastResult || async }}</p>
+<div class="flex-container" fxLayout="row" fxLayout.xs="column"
+     fxLayoutAlign="center center"
+     fxLayoutAlign.xs="start">
 
-<div id="interactive" class="viewport" #interactive></div>
+  <md-card class="flex-item" fxFlex="50">
+    <p>Notice: You must allow to use your webcam. This Option only works on IE11+ and may not work with Android browser older version. Alternatively use upload file option.</p>
+    <div id="interactive" class="viewport clearfix" #interactive></div>
+  </md-card>
 
-<div class="ticket">
-  <div class="datas">
-    <a class="link">
-      <div class="ribbon">
-        <div class="label">LIMITED</div>
+  <md-card class="flex-item app-input-section" fxFlex="50" *ngIf="lastResult">
+
+    <div class="ticket">
+      <div class="datas">
+        <a class="link">
+          <div class="ribbon">
+            <div class="label">LIMITED</div>
+          </div>
+          <span>Your Code is</span>
+          <strong>{{ lastResult || async }}'</strong>
+          <em *ngIf="!message">Green PASS</em>
+          <em *ngIf="message">{{message}}</em>
+        </a>
       </div>
-      <span>TOMORROWLAND</span>
-      <strong>10'</strong>
-      <em>Green PASS</em>
-    </a>
-  </div>
-  <a class="button">ORDER NOW!</a>
-</div>
-<div class="ticket-in">
-  <div class="content">
-    <div class="pass">
-      <h1>Dreamville Limited</h1>
     </div>
-    <span>PREMIUM</span>
-    <em>2015</em>
-  </div>
+  </md-card>
 </div>
+
+

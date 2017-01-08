@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BarcodeValidatorService {
@@ -16,17 +17,23 @@ export class BarcodeValidatorService {
   };
   
   
-  doSearchbyCode(codes: Observable<any>, debounceMs = 1000) {
+  doSearchbyCode(codes: Observable<any>, debounceMs = 400) {
     return codes
-                .debounceTime(debounceMs)
-                .distinctUntilChanged()
-                .switchMap(code => this.rawSearchByCode(code));
+      .debounceTime(debounceMs)
+      .distinctUntilChanged()
+      .switchMap(code => this.rawSearchByCode(code));
   }
   
   
-  rawSearchByCode(code) {
+  rawSearchByCode(code): Promise<any> {
     return this._http.get(`${this.endpoints.search}${code}`)
-               .map((res: Response) => res.json())
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+  }
+  
+  private handleError(error: any): Promise<any> {
+    return Promise.reject(error.message|| error);
   }
   
 }

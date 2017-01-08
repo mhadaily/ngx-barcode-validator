@@ -9,7 +9,6 @@ export class ValidateBarcodeService {
   
   private endpoints = {
     search: 'https://mutec.gomus.de/api/v3/barcodes/',
-    
   };
   
   doSearchByCode (code): Observable<any> {
@@ -17,7 +16,6 @@ export class ValidateBarcodeService {
                .map((res: Response) => res.json())
                .catch((error: any) => Observable.throw(error.json().error || 'Server Error!'))
   }
-  
   
   
 }

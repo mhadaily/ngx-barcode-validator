@@ -1,9 +1,4 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
-// import { Quagga } from "quagga/type-definitions/quagga";
-
-
-// https://mutec.gomus.de/api/v3/barcodes/:code
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-barcode',

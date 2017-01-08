@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { DomSanitizer } from "@angular/platform-browser";
-import { ValidateBarcodeService } from "../../validate-barcode.service";
+import { ValidateBarcodeService } from "../../services/validate-barcode.service";
+import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
+
 
 declare const Quagga: any;
 
@@ -10,46 +12,14 @@ declare const Quagga: any;
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.scss']
 })
-export class InputFieldComponent implements OnInit,OnDestroy {
+export class InputFieldComponent implements OnDestroy {
   
   @ViewChild('isbn') isbn;
   
-  config: any;
   resultUrl: any;
-  codeNumber: string;
   resultCode: any;
   
-  constructor (private sanitizer: DomSanitizer, private validateBarcode: ValidateBarcodeService) { }
-  
-  ngOnInit () {
-    this.config = {
-      inputStream: {
-        size: 800
-      },
-      locator: {
-        patchSize: "medium",
-        halfSample: false
-      },
-      numOfWorkers: 1,
-      decoder: {
-        readers: ['ean_reader', 'code_128_reader', 'ean_8_reader', 'code_39_reader', 'code_39_vin_reader',
-          'codabar_reader', 'upc_reader', 'upc_e_reader', 'i2of5_reader']
-      },
-      locate: true,
-      src: null
-    };
-  }
-  
-  
-  decode (src) {
-    this.config.src = src;
-    Quagga.decodeSingle(this.config, result => {
-      let code = result.codeResult.code;
-      this.isbn.nativeElement.value = code;
-      this.codeNumber = code;
-      this.validate(code);
-    });
-  }
+  constructor (private sanitizer: DomSanitizer, private validateBarcode: ValidateBarcodeService, private decode: BarcodeDecoderService) { }
   
   sanitize (url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
@@ -61,15 +31,22 @@ export class InputFieldComponent implements OnInit,OnDestroy {
   }
   
   onChange (e) {
-    if (e.target.files && e.target.files.length) {
-      const file = URL.createObjectURL(e.target.files[0]);
-      this.decode(this.setResultUrl(file));
+    if (!e.target.files && !e.target.files.length) {
+      throw new Error('cannot find uploaded file;');
     }
+    const file = URL.createObjectURL(e.target.files[0]);
+    
+    this.decode.onDecodeSingle(this.setResultUrl(file))
+        .then(code => {
+          this.isbn.nativeElement.value = code;
+          this.validate(code);
+        })
+        .catch(e => console.error(e));
   }
   
-  validate(code){
+  validate (code) {
     this.validateBarcode.doSearchByCode(code)
-      .subscribe(code=> this.resultCode = code)
+        .subscribe(code => this.resultCode = code)
   }
   
   ngOnDestroy () {

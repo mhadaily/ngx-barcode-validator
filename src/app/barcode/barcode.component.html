@@ -1,10 +1,8 @@
-{{title}}
+<md-card>
+  instant search
+</md-card>
 
-<nav>
-  <button [routerLinkActive]="['active']" [routerLink]="['media']">Media Stream</button>
-  <button [routerLinkActive]="['active']" [routerLink]="['field']">FILED</button>
-</nav>
+<md-card>
+  <router-outlet></router-outlet>
+</md-card>
 
-
-
-<router-outlet></router-outlet>

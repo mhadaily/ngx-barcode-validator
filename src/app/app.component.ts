@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,12 @@ import { Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent{
+export class AppComponent implements OnInit {
   isDarkTheme: boolean = false;
+  title: string = 'Angular2 Barcode Scanner';
+  
+  ngOnInit() {
+  }
+  
   
 }

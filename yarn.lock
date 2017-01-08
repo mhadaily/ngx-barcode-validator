@@ -35,6 +35,10 @@
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.2.tgz#774fb675733437be5eab635ab13235c76ec961ba"
 
+"@angular/flex-layout@^2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-2.0.0-beta.1.tgz#719cbd77394700ced82015938454cc85b590f5c0"
+
 "@angular/forms@^2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.2.tgz#73286f4e10d795c66b0c61df0c4e906bfe7917d1"

@@ -14,3 +14,44 @@
 <h3 *ngIf="resultCode">
   {{resultCode}}
 </h3>
+
+
+<div class="container">
+  <div class="tab"></div>
+  <div class="paid"><p>Receipt Paid successfully</p></div>
+  <div class="receipt">
+    <div class="paper">
+      <div class="title">Receipt</div>
+      <div class="date">Date: 20/07/2013</div>
+      <table>
+        <tbody>
+        <tr>
+          <td>2 x Coffee</td>
+          <td class="right">$10</td>
+        </tr>
+        <tr>
+          <td>1 x Rice</td>
+          <td class="right">$30</td>
+        </tr>
+        <tr>
+          <td>5 x Milk</td>
+          <td class="right">$90</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="center"><input type="button" value="Pay Now" onClick="pay()"/></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="sign center">
+        <div class="barcode"></div>
+        <br/>
+        0123456789
+        <br/>
+        <div class="thankyou">
+          Thank you for your business
+        </div>
+      </div>
+    </div>
+
+    <div>
+    </div>

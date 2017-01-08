@@ -71,6 +71,7 @@
             <br/>
             {{resultCode}}
             <br/>
+            <md-spinner class="smaller app-spinner" *ngIf="!message"></md-spinner>
             <div class="flex-item" *ngIf="message">
               {{message}}
             </div>

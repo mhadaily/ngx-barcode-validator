@@ -3,6 +3,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
 import { Subject } from "rxjs/Subject";
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-input-field',
@@ -41,19 +42,15 @@ export class InputFieldComponent implements OnInit,OnDestroy {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
   
-  setResultUrl(url) {
-    this.resultUrl = this.sanitize(url);
-    return url;
-  }
-  
   setStartProgress() {
     this.startProgress = !this.startProgress;
   }
   
   onChange(e) {
     const file = URL.createObjectURL(e.target.files[0]);
-    this.decoderService.onDecodeSingle(this.setResultUrl(file))
+    this.decoderService.onDecodeSingle(file)
         .then(code => {
+          this.resultUrl = this.sanitize(file);
           this.isbn.value = code;
           this.resultCode = code;
           this.decoderService.onPlaySound();
@@ -61,6 +58,9 @@ export class InputFieldComponent implements OnInit,OnDestroy {
           this.setStartProgress();
         })
         .catch(e => {
+          this.resultUrl = '';
+          this.resultCode = '';
+          this.isbn.value = '';
           this.setStartProgress();
           this.error = `Something is wrong: ${e}`;
         });
@@ -80,5 +80,4 @@ export class InputFieldComponent implements OnInit,OnDestroy {
   ngOnDestroy() {
     console.info('Stopped!')
   }
-  
 }

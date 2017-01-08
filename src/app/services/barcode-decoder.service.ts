@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DECODER_CONFIG } from "../config/decoder-config";
+import { DECODER_CONFIG, DECODER_LIVE_CONFIG } from "../config/decoder-config";
 
 declare const Quagga: any;
 
@@ -15,7 +15,6 @@ export class BarcodeDecoderService {
     // Promisify DecodeSingle method from Quagga
     return new Promise((resolve, reject) => {
       Quagga.decodeSingle(DECODER_CONFIG, result => {
-        
         if (!result || typeof result.codeResult === 'undefined') {
           reject('File Cannot be Decode, Please Try a Valid Barcode;');
         }
@@ -25,7 +24,7 @@ export class BarcodeDecoderService {
   }
   
   private setLiveStreamConfig() {
-    DECODER_CONFIG.inputStream = {
+    DECODER_LIVE_CONFIG.inputStream = {
       type: "LiveStream",
       constraints: {
         width: {min: 640},
@@ -37,7 +36,7 @@ export class BarcodeDecoderService {
         }
       }
     };
-    return DECODER_CONFIG;
+    return DECODER_LIVE_CONFIG;
   }
   
   onLiveStreamInit() {

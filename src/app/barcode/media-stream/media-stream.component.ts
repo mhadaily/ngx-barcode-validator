@@ -9,7 +9,7 @@ import { Subject } from "rxjs/Subject";
   templateUrl: './media-stream.component.html',
   styleUrls: ['./media-stream.component.scss']
 })
-export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,DoCheck {
+export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit {
   
   lastResult: any;
   message: any;
@@ -21,7 +21,11 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   
   constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {};
   
-  ngDoCheck() {
+  ngOnInit() {
+    
+    this.decoderService.onLiveStreamInit();
+    this.decoderService.onDecodeProcessed();
+  
     this.decoderService.onDecodeDetected()
         .then(code => {
           this.lastResult = code;
@@ -29,11 +33,7 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
           this.code$.next(code);
         })
         .catch((err) => this.error = `Something Wrong: ${err}`);
-  }
-  
-  ngOnInit() {
-    this.decoderService.onLiveStreamInit();
-    this.decoderService.onDecodeProcessed();
+    
     this.barcodeValidator.doSearchbyCode(this.code$)
         .subscribe(
           res => this.message = res,

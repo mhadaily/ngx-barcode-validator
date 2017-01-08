@@ -13,7 +13,7 @@ import { BarcodeComponent } from './barcode/barcode.component';
 import { HomeComponent } from './home/home.component';
 import { MediaStreamComponent } from './barcode/media-stream/media-stream.component';
 import { InputFieldComponent } from './barcode/input-field/input-field.component';
-import { ValidateBarcodeService } from "./services/validate-barcode.service";
+import { BarcodeValidatorService } from "./services/barcode-validator.service";
 import { BarcodeDecoderService } from "./services/barcode-decoder.service";
 
 @NgModule({
@@ -35,7 +35,7 @@ import { BarcodeDecoderService } from "./services/barcode-decoder.service";
     MaterialModule.forRoot(),
   ],
   entryComponents: [DialogContentComponent],
-  providers: [ValidateBarcodeService,BarcodeDecoderService],
+  providers: [BarcodeValidatorService,BarcodeDecoderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

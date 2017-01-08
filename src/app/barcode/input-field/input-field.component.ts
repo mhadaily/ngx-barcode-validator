@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
-import { ValidateBarcodeService } from "../../services/validate-barcode.service";
+import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
 
 @Component({
@@ -16,7 +16,7 @@ export class InputFieldComponent implements OnDestroy {
   resultCode: any;
   
   constructor ( private sanitizer: DomSanitizer,
-                private validateBarcode: ValidateBarcodeService,
+                private validatorService: BarcodeValidatorService,
                 private decoderService: BarcodeDecoderService) { }
   
   sanitize (url: string) {
@@ -44,7 +44,7 @@ export class InputFieldComponent implements OnDestroy {
   }
   
   validate (code) {
-    this.validateBarcode.doSearchByCode(code)
+    this.validatorService.doSearchByCode(code)
         .subscribe(code => this.resultCode = code)
   }
   

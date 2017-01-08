@@ -5,9 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './barcode.component.html',
   styleUrls: ['./barcode.component.scss']
 })
-export class BarcodeComponent  {
+export class BarcodeComponent {
   
-  private title = "Barcode!!!";
-  
-
 }

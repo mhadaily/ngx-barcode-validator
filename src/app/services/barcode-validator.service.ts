@@ -3,7 +3,7 @@ import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs";
 
 @Injectable()
-export class ValidateBarcodeService {
+export class BarcodeValidatorService {
   
   constructor (private _http: Http) { }
   
@@ -16,6 +16,5 @@ export class ValidateBarcodeService {
                .map((res: Response) => res.json())
                .catch((error: any) => Observable.throw(error.json().error || 'Server Error!'))
   }
-  
   
 }

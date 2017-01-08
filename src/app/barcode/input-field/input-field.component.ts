@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
 import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
@@ -9,7 +9,7 @@ import { Subject } from "rxjs/Subject";
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.scss']
 })
-export class InputFieldComponent implements OnDestroy {
+export class InputFieldComponent implements OnInit,OnDestroy {
   
   @ViewChild('isbn') isbn;
   @ViewChild('fileInputbox') fileInputbox;
@@ -25,8 +25,9 @@ export class InputFieldComponent implements OnDestroy {
   
   constructor(private sanitizer: DomSanitizer,
               private barcodeValidator: BarcodeValidatorService,
-              private decoderService: BarcodeDecoderService) {
-    
+              private decoderService: BarcodeDecoderService) {}
+  
+  ngOnInit() {
     this.barcodeValidator.doSearchbyCode(this.code$)
         .subscribe(
           res => this.message = res,
@@ -34,7 +35,6 @@ export class InputFieldComponent implements OnDestroy {
             this.message = `An Error! ${err.json().error}`
           }
         );
-    
   }
   
   sanitize(url: string) {

@@ -19,17 +19,7 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   
   @ViewChild('interactive') interactive;
   
-  constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {
-    
-    this.barcodeValidator.doSearchbyCode(this.code$)
-        .subscribe(
-          res => this.message = res,
-          err => {
-            this.message = `An Error! ${err.json().error}`
-          }
-        );
-    
-  };
+  constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {};
   
   ngDoCheck() {
     this.decoderService.onDecodeDetected()
@@ -44,6 +34,13 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   ngOnInit() {
     this.decoderService.onLiveStreamInit();
     this.decoderService.onDecodeProcessed();
+    this.barcodeValidator.doSearchbyCode(this.code$)
+        .subscribe(
+          res => this.message = res,
+          err => {
+            this.message = `An Error! ${err.json().error}`
+          }
+        );
   }
   
   ngAfterContentInit() {

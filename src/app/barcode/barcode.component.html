@@ -1,8 +1,22 @@
-<md-card>
+<md-card class="text-center">
   <h3 class="text-center">Barcode Scanner</h3>
+  <p>User Instant Search or Alternatively you can upload your barcode or scan via webcam/camera</p>
+  <div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+    <div class="flex-item" [routerLink]="['barcode/field']"><button md-fab><md-icon>file_upload</md-icon></button></div>
+    <div class="flex-item" [routerLink]="['barcode/media']"><button md-fab><md-icon>camera</md-icon></button></div>
+  </div>
 </md-card>
 
 <md-card>
+
+  <md-card>
+    <input class="instantInput" (input)="code$.next($event.target.value)" placeholder="Type your barcode number">
+    <md-card *ngIf="spinner">
+      <md-spinner color="accent" class="app-spinner"></md-spinner>
+      {{message}}
+    </md-card>
+  </md-card>
+
   <router-outlet></router-outlet>
 </md-card>
 

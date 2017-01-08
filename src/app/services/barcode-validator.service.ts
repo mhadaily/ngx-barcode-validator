@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http } from "@angular/http";
 import { Observable } from "rxjs/observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BarcodeValidatorService {
@@ -25,15 +24,14 @@ export class BarcodeValidatorService {
   }
   
   
-  rawSearchByCode(code): Promise<any> {
+  rawSearchByCode(code): Observable<any> {
     return this._http.get(`${this.endpoints.search}${code}`)
-               .toPromise()
-               .then(response => response.json())
+               .map(response => response.json())
                .catch(this.handleError);
   }
   
   private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message|| error);
+    return Promise.reject(error.message || error);
   }
   
 }

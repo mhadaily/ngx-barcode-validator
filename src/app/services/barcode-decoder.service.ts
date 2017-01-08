@@ -6,7 +6,9 @@ declare const Quagga: any;
 @Injectable()
 export class BarcodeDecoderService {
   
-  constructor () { }
+  sound = new Audio("assets/barcode.wav");
+  
+  constructor () {}
   
   onDecodeSingle (src) {
     DECODER_CONFIG.src = src;
@@ -111,6 +113,10 @@ export class BarcodeDecoderService {
   onDecodeStop () {
     Quagga.stop();
     console.info('Camera Stopped Working!');
+  }
+  
+  onPlaySound () {
+    this.sound.play();
   }
   
 }

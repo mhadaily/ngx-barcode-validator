@@ -17,7 +17,10 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
   
   ngDoCheck () {
     this.decode.onDecodeDetected()
-        .then(code => this.lastResult = code)
+        .then(code => {
+          this.lastResult = code;
+          this.decode.onPlaySound();
+        })
         .catch((err) => console.error(err));
   }
   
@@ -25,7 +28,6 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit,D
     this.decode.onLiveStreamInit();
     this.decode.onDecodeProcessed();
   }
-  
   
   ngAfterContentInit () {
     this.interactive.nativeElement.children[0].style.position = 'absolute';

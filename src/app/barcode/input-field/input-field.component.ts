@@ -38,6 +38,7 @@ export class InputFieldComponent implements OnDestroy {
     this.decode.onDecodeSingle(this.setResultUrl(file))
         .then(code => {
           this.isbn.nativeElement.value = code;
+          this.decode.onPlaySound();
           this.validate(code);
         })
         .catch(e => console.error(e));

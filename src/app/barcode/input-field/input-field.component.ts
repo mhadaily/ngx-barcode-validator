@@ -16,6 +16,7 @@ export class InputFieldComponent implements OnDestroy {
   resultUrl: any;
   resultCode: any;
   startProgress: boolean = false;
+  error: any;
   
   constructor(private sanitizer: DomSanitizer,
               private validatorService: BarcodeValidatorService,
@@ -35,11 +36,7 @@ export class InputFieldComponent implements OnDestroy {
   }
   
   onChange(e) {
-    if (!e.target.files && !e.target.files.length) {
-      throw new Error('cannot find uploaded file;');
-    }
     const file = URL.createObjectURL(e.target.files[0]);
-    
     this.decoderService.onDecodeSingle(this.setResultUrl(file))
         .then(code => {
           this.isbn.value = code;
@@ -50,19 +47,24 @@ export class InputFieldComponent implements OnDestroy {
         })
         .catch(e => {
           this.setStartProgress();
-          console.log(e);
+          this.error = `Something is wrong: ${e}`;
         });
+  }
+  
+  onCancel(e){
+    this.setStartProgress();
+    this.error = `Something is wrong: Please Select An Image`;
   }
   
   onClick() {
     this.setStartProgress();
     this.fileInputbox.nativeElement.click();
+    this.error = null;
   }
-  
   
   validate(code) {
     this.validatorService.doSearchByCode(code)
-        .subscribe(code => console.log(code))
+        .subscribe(res => console.log(res,1))
   }
   
   ngOnDestroy() {

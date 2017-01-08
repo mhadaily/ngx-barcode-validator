@@ -20,7 +20,7 @@
         <button (click)="onClick()" md-fab>
           <md-icon>file_upload</md-icon>
         </button>
-        <input type="file" accept="image/*" capture="camera" #fileInputbox (change)="onChange($event)"
+        <input type="file" accept="image/*" capture="camera" #fileInputbox (cancel)="onCancel($event)" (change)="onChange($event)"
                [ngClass]="['none']">
       </div>
 
@@ -38,12 +38,16 @@
                        class="app-progress flex-item"
                        mode="indeterminate"
                        aria-label="Indeterminate progress-bar example"></md-progress-bar>
+
+      <div class="flex-item" *ngIf="error">
+        {{error}}
+      </div>
     </div>
   </md-card>
 
   <md-card class="flex-item app-input-section" fxFlex="50" *ngIf="resultCode">
 
-    <div class="container" >
+    <div class="container">
       <div class="tab"></div>
       <div class="paid"><p>Your Ticket Information</p></div>
       <div class="receipt">
@@ -63,7 +67,7 @@
             </tbody>
           </table>
           <div class="sign center">
-            <img class="small-img"  [src]="resultUrl">
+            <img class="small-img" [src]="resultUrl">
             <br/>
             {{resultCode}}
             <br/>

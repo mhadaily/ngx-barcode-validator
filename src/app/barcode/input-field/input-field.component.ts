@@ -15,20 +15,20 @@ export class InputFieldComponent implements OnDestroy {
   resultUrl: any;
   resultCode: any;
   
-  constructor ( private sanitizer: DomSanitizer,
-                private validatorService: BarcodeValidatorService,
-                private decoderService: BarcodeDecoderService) { }
+  constructor(private sanitizer: DomSanitizer,
+              private validatorService: BarcodeValidatorService,
+              private decoderService: BarcodeDecoderService) { }
   
-  sanitize (url: string) {
+  sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
   
-  setResultUrl (url) {
+  setResultUrl(url) {
     this.resultUrl = this.sanitize(url);
     return url;
   }
   
-  onChange (e) {
+  onChange(e) {
     if (!e.target.files && !e.target.files.length) {
       throw new Error('cannot find uploaded file;');
     }
@@ -43,12 +43,12 @@ export class InputFieldComponent implements OnDestroy {
         .catch(e => console.error(e));
   }
   
-  validate (code) {
+  validate(code) {
     this.validatorService.doSearchByCode(code)
         .subscribe(code => this.resultCode = code)
   }
   
-  ngOnDestroy () {
+  ngOnDestroy() {
     console.info('Stopped!')
   }
   

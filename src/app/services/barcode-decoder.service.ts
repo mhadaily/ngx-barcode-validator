@@ -8,9 +8,9 @@ export class BarcodeDecoderService {
   
   sound = new Audio("assets/barcode.wav");
   
-  constructor () {}
+  constructor() {}
   
-  onDecodeSingle (src) {
+  onDecodeSingle(src) {
     DECODER_CONFIG.src = src;
     // Promisify DecodeSingle method from Quagga
     return new Promise((resolve, reject) => {
@@ -24,7 +24,7 @@ export class BarcodeDecoderService {
     });
   }
   
-  private setLiveStreamConfig () {
+  private setLiveStreamConfig() {
     DECODER_CONFIG.inputStream = {
       type: "LiveStream",
       constraints: {
@@ -40,7 +40,7 @@ export class BarcodeDecoderService {
     return DECODER_CONFIG;
   }
   
-  onLiveStreamInit () {
+  onLiveStreamInit() {
     const state = this.setLiveStreamConfig();
     Quagga.init(state, (err) => {
       if (err) {
@@ -50,16 +50,16 @@ export class BarcodeDecoderService {
     });
   }
   
-  onProcessed (result: any) {
+  onProcessed(result: any) {
     let drawingCtx = Quagga.canvas.ctx.overlay,
       drawingCanvas = Quagga.canvas.dom.overlay;
     
     if (result) {
       if (result.boxes) {
         drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-        result.boxes.filter(function (box) {
+        result.boxes.filter(function(box) {
           return box !== result.box;
-        }).forEach(function (box) {
+        }).forEach(function(box) {
           Quagga.ImageDebug.drawPath(box, {
             x: 0,
             y: 1
@@ -93,11 +93,11 @@ export class BarcodeDecoderService {
     }
   }
   
-  onDecodeProcessed () {
+  onDecodeProcessed() {
     Quagga.onProcessed(this.onProcessed);
   }
   
-  onDecodeDetected () {
+  onDecodeDetected() {
     // Promisify OnDetected method from Quagga
     return new Promise((resolve, reject) => {
       Quagga.onDetected(result => {
@@ -110,12 +110,12 @@ export class BarcodeDecoderService {
     });
   }
   
-  onDecodeStop () {
+  onDecodeStop() {
     Quagga.stop();
     console.info('Camera Stopped Working!');
   }
   
-  onPlaySound () {
+  onPlaySound() {
     this.sound.play();
   }
   

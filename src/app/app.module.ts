@@ -35,8 +35,9 @@ import { BarcodeDecoderService } from "./services/barcode-decoder.service";
     MaterialModule.forRoot(),
   ],
   entryComponents: [DialogContentComponent],
-  providers: [BarcodeValidatorService,BarcodeDecoderService],
+  providers: [BarcodeValidatorService, BarcodeDecoderService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 

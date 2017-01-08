@@ -6,8 +6,6 @@ import { MaterialModule } from "@angular/material";
 import { routing } from "./app.routing";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AppComponent } from './app.component';
-import { Material2Component } from './material2/material2.component';
-import { DialogContentComponent } from './material2/dialog-content/dialog-content.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BarcodeComponent } from './barcode/barcode.component';
 import { MediaStreamComponent } from './barcode/media-stream/media-stream.component';
@@ -21,8 +19,6 @@ import { FabMenuComponent } from './shared/fab-menu/fab-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    Material2Component,
-    DialogContentComponent,
     NotFoundComponent,
     BarcodeComponent,
     MediaStreamComponent,
@@ -39,7 +35,6 @@ import { FabMenuComponent } from './shared/fab-menu/fab-menu.component';
     FlexLayoutModule.forRoot(),
     MaterialModule.forRoot(),
   ],
-  entryComponents: [DialogContentComponent],
   providers: [BarcodeValidatorService, BarcodeDecoderService],
   bootstrap: [AppComponent]
 })

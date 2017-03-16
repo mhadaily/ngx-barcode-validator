@@ -9,8 +9,6 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   isDarkTheme: boolean = false;
   title: string = 'Angular2 Barcode Scanner';
-  
   ngOnInit() {
   }
-  
 }

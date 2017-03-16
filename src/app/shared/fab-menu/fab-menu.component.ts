@@ -113,7 +113,6 @@ import { Component, OnInit, trigger, state, style, transition, animate, group, k
         ])]
       )  //void
     ]),
-    
   ]
 })
 export class FabMenuComponent implements OnInit {

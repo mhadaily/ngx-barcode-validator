@@ -5,7 +5,7 @@ declare const Quagga: any;
 
 @Injectable()
 export class BarcodeDecoderService {
-  
+    
   sound = new Audio("assets/barcode.wav");
   
   constructor() {}

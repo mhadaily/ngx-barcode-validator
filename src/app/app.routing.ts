@@ -6,7 +6,6 @@ import { BARCODE_ROUTE } from "./barcode/barcode.route";
 
 
 const APP_ROUTES: Routes = [
-  
   {
     path: '',
     redirectTo: '/barcode/search',

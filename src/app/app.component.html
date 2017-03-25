@@ -1,37 +1,40 @@
 <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
-    <md-sidenav #sidenav mode="side">
-        <div class="flex-container" fxLayout="column">
-            <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode']">Homepage
+  <md-sidenav #sidenav mode="side">
+    <div class="flex-container" fxLayout="column">
+      <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode']">Homepage
       </button>
-            <div class="flex-item">
-                <hr>
-            </div>
-            <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode/media']">Media Stream
+      <div class="flex-item">
+        <hr>
+      </div>
+      <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode/media']">Media Stream
       </button>
-            <div class="flex-item">
-                <hr>
-            </div>
-            <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode/field']">Input File
+      <div class="flex-item">
+        <hr>
+      </div>
+      <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode/field']">Input File
       </button>
-        </div>
-    </md-sidenav>
-    <md-toolbar color="primary">
-
-        <button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons app-toolbar-menu">menu</i>
-    </button> {{title}}
-
-        <span class="app-toolbar-filler"></span>
-        <button md-button (click)="isDarkTheme = !isDarkTheme"><md-icon>settings</md-icon></button>
-    </md-toolbar>
-
-
-    <div class="app-content">
-        <router-outlet></router-outlet>
     </div>
+  </md-sidenav>
+  <md-toolbar color="primary">
+
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    {{title}}
+
+    <span class="app-toolbar-filler"></span>
+    <button md-button (click)="isDarkTheme = !isDarkTheme">
+      <md-icon>settings</md-icon>
+    </button>
+  </md-toolbar>
+
+
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
 
 </md-sidenav-layout>
 
 
-<app-fab-menu></app-fab-menu>
+<app-fab-menu [isDarkTheme]="isDarkTheme"></app-fab-menu>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {trigger, state, style, transition, animate, group, keyframes } from '@angular/animations';
 
 @Component({
@@ -117,7 +117,7 @@ import {trigger, state, style, transition, animate, group, keyframes } from '@an
   ]
 })
 export class FabMenuComponent{
-  
+  @Input() isDarkTheme: boolean;
   active: boolean = false;
   state: string = 'in';
   

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { DECODER_CONFIG, DECODER_LIVE_CONFIG } from "../config/decoder-config";
-
-declare const Quagga: any;
+import Quagga from 'Quagga';
 
 @Injectable()
 export class BarcodeDecoderService {
-    
-  sound = new Audio("assets/barcode.wav");
+  
+  sound = new Audio('assets/barcode.wav');
   
   constructor() {}
   

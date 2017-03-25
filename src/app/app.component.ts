@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   isDarkTheme: boolean = false;
-  private title: string = 'Angular Barcode Scanner and Validator Using Observable (RxJS)';
-  private fork: string = 'FORK ME!';
+  title: string = 'Angular Barcode Scanner and Validator Using Observable (RxJS)';
+  fork: string = 'FORK ME!';
 }

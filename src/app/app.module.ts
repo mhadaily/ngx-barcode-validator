@@ -36,7 +36,7 @@ import { InstantSearchComponent } from './barcode/instant-search/instant-search.
     FormsModule,
     HttpModule,
     routing,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     MaterialModule.forRoot(),
   ],
   providers: [BarcodeValidatorService, BarcodeDecoderService],

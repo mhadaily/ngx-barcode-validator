@@ -20,7 +20,8 @@
         <button (click)="onClick()" md-fab>
           <md-icon>file_upload</md-icon>
         </button>
-        <input type="file" accept="image/*" capture="camera" #fileInputbox (cancel)="onCancel($event)" (change)="onChange($event)"
+        <input type="file" accept="image/*" capture="camera" #fileInputbox (cancel)="onCancel($event)"
+               (change)="onChange($event)"
                [ngClass]="['none']">
       </div>
 

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.scss']
 })
-export class InputFieldComponent implements OnInit,OnDestroy {
+export class InputFieldComponent implements OnInit, OnDestroy {
   
   @ViewChild('isbn') isbn;
   @ViewChild('fileInputbox') fileInputbox;

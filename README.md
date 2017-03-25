@@ -6,6 +6,8 @@ soon as possible and possibly make that as an NG Module and reusable soon.
 
 ### [Live Demo](https://www.majidhajian.com/ng2-barcode-validator)
 
+[![Angular Barcode Scanner](barcodescanner.gif)](https://www.majidhajian.com/ng2-barcode-validator)
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli).
 
 ## Development server

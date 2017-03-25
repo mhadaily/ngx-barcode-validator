@@ -9,7 +9,7 @@ import { Subject } from "rxjs/Subject";
   templateUrl: './media-stream.component.html',
   styleUrls: ['./media-stream.component.scss']
 })
-export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit {
+export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit {
   
   lastResult: any;
   message: any;
@@ -25,7 +25,7 @@ export class MediaStreamComponent implements OnInit,OnDestroy,AfterContentInit {
     
     this.decoderService.onLiveStreamInit();
     this.decoderService.onDecodeProcessed();
-  
+    
     this.decoderService.onDecodeDetected()
         .then(code => {
           this.lastResult = code;

@@ -5,8 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-instant-search',
-  templateUrl: './instant-search.component.html',
-  styleUrls: ['./instant-search.component.scss']
+  templateUrl: './instant-search.component.html'
 })
 export class InstantSearchComponent implements OnInit {
   

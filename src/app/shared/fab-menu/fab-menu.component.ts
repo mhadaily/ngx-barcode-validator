@@ -1,4 +1,5 @@
-import { Component, OnInit, trigger, state, style, transition, animate, group, keyframes } from '@angular/core';
+import { Component } from '@angular/core';
+import {trigger, state, style, transition, animate, group, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-fab-menu',
@@ -115,15 +116,12 @@ import { Component, OnInit, trigger, state, style, transition, animate, group, k
     ]),
   ]
 })
-export class FabMenuComponent implements OnInit {
+export class FabMenuComponent{
   
   active: boolean = false;
   state: string = 'in';
   
   constructor() { }
-  
-  ngOnInit() {
-  }
   
   onClick() {
     this.active = !this.active;

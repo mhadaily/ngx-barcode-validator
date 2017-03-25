@@ -1,4 +1,8 @@
-# Angular Barcode Validator Application
+# Angular Barcode Scanner and Validator Application Via Upload, Instant Search and Media Stream (webcam)
+
+This application tend to bring a simple barcode scanner into your browser using your webcam. 
+It's just an experimental and definitely can be a lot better. I will try to make this application widely usable as 
+soon as possible and possibly make that as an NG Module and reusable soon. 
 
 ### [Live Demo](https://www.majidhajian.com/ng2-barcode-validator)
 

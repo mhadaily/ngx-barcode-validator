@@ -21,12 +21,13 @@
     <button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
-    {{title}}
-
-    <span class="app-toolbar-filler"></span>
     <button md-button (click)="isDarkTheme = !isDarkTheme">
       <md-icon>settings</md-icon>
     </button>
+    {{title}}
+    <span class="app-toolbar-filler"></span>
+    {{fork}}
+
   </md-toolbar>
 
 

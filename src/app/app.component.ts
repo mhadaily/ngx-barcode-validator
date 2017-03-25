@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent{
+export class AppComponent {
   isDarkTheme: boolean = false;
-  title: string = 'Angular Barcode Scanner';
+  private title: string = 'Angular Barcode Scanner';
+  private fork: string = 'FORK ME!';
 }

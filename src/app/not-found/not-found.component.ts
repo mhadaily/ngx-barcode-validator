@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-not-found',
   template: `<h1>NOT FOUND!</h1>`
 })
-export class NotFoundComponent{}
+export class NotFoundComponent {}

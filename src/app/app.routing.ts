@@ -1,29 +1,17 @@
 import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
-import { BarcodeComponent } from "./barcode/barcode.component";
-import { BARCODE_ROUTE } from "./barcode/barcode.route";
+import { NgModule } from "@angular/core";
 
-
-const APP_ROUTES: Routes = [
+const ROOT_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/barcode/search',
-    pathMatch: 'full'
+    component: AppComponent,
+    pathMatch: 'full',
   },
   {
     path: 'barcode',
-    redirectTo: '/barcode/search',
-    pathMatch: 'full'
-  },
-  {
-    path: 'barcode',
-    component: BarcodeComponent,
-    children: BARCODE_ROUTE,
-  },
-  {
-    path: 'app',
-    component: AppComponent
+    loadChildren: './barcode/barcode.module#BarcodeModule',
   },
   {
     path: '404',
@@ -37,5 +25,13 @@ const APP_ROUTES: Routes = [
 
 ];
 
-export const routing = RouterModule.forRoot(APP_ROUTES);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(ROOT_ROUTES),
+  ],
+  exports: [
+    RouterModule,
+  ],
+})
+export class AppRoutingModule {}
 

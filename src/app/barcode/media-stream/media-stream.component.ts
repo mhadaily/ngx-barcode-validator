@@ -26,7 +26,8 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
     this.decoderService.onLiveStreamInit();
     this.decoderService.onDecodeProcessed();
     
-    this.decoderService.onDecodeDetected()
+    this.decoderService
+        .onDecodeDetected()
         .then(code => {
           this.lastResult = code;
           this.decoderService.onPlaySound();
@@ -34,7 +35,8 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
         })
         .catch((err) => this.error = `Something Wrong: ${err}`);
     
-    this.barcodeValidator.doSearchbyCode(this.code$)
+    this.barcodeValidator
+        .doSearchbyCode(this.code$)
         .subscribe(
           res => this.message = res,
           err => {

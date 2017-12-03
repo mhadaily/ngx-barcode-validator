@@ -1,31 +1,38 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/observable";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import { of } from 'rxjs/observable/of';
+
 
 @Injectable()
 export class BarcodeValidatorService {
   
-  constructor(private _http: Http) { }
+  constructor(private _http: HttpClient) { }
   
   private endpoints = {
-    search: 'https://mutec.gomus.de/api/v3/barcodes/',//sample endpoint to validate your barcode
+    search: 'https://exmpale-barcode-service.com',//sample endpoint to validate your barcode
   };
   
   doSearchbyCode(codes: Observable<any>, debounceMs = 400) {
     return codes
-      .debounceTime(debounceMs)
-      .distinctUntilChanged()
-      .switchMap(code => this.rawSearchByCode(code));
+      .pipe(
+        debounceTime(debounceMs),
+        distinctUntilChanged(),
+        switchMap(code => this.rawSearchByCode(code)),
+      )
   }
   
   rawSearchByCode(code): Observable<any> {
-    return this._http.get(`${this.endpoints.search}${code}`)
-               .map(response => response.json())
-               .catch(this.handleError);
+    /** Uncomment if you have you want to active your barcode service to be validated from a URL
+     return this._http
+     .get(`${this.endpoints.search}${code}`)
+     .pipe(
+     catchError(this.handleError),
+     )
+     */
+    return of('Your Barcode Service Provider Sample Message');
+    
   }
   
   private handleError(error: any): Promise<any> {

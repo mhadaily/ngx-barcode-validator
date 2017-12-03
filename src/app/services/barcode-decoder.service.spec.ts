@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
 import { BarcodeDecoderService } from './barcode-decoder.service';
+import { inject, TestBed } from "@angular/core/testing";
 
 describe('BarcodeDecoderService', () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('BarcodeDecoderService', () => {
       providers: [BarcodeDecoderService]
     });
   });
-
+  
   it('should ...', inject([BarcodeDecoderService], (service: BarcodeDecoderService) => {
     expect(service).toBeTruthy();
   }));

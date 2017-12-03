@@ -3,7 +3,6 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
 import { Subject } from "rxjs/Subject";
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-input-field',
@@ -48,14 +47,15 @@ export class InputFieldComponent implements OnInit, OnDestroy {
   
   onChange(e) {
     const file = URL.createObjectURL(e.target.files[0]);
-    this.decoderService.onDecodeSingle(file)
+    this.decoderService
+        .onDecodeSingle(file)
         .then(code => {
+          this.setStartProgress();
           this.resultUrl = this.sanitize(file);
           this.isbn.value = code;
           this.resultCode = code;
           this.decoderService.onPlaySound();
           this.code$.next(code);
-          this.setStartProgress();
         })
         .catch(e => {
           this.resultUrl = '';

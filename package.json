@@ -7,6 +7,7 @@
     "ng": "ng",
     "start": "ng serve --aot",
     "build": "ng build --aot --prod",
+    "deploy": "ng build --aot --prod --base-href '/ng2-barcode-validator/' && angular-cli-ghpages",
     "lint": "ng lint",
     "test": "ng test",
     "e2e": "protractor"
@@ -37,8 +38,8 @@
     "@angular/compiler-cli": "^5.0.5",
     "@types/jasmine": "^2.8.2",
     "@types/node": "^8.0.53",
+    "angular-cli-ghpages": "^0.5.2",
     "codelyzer": "~4.0.1",
-    "ts-helpers": "^1.1.2",
     "jasmine-core": "2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^1.7.1",
@@ -47,6 +48,7 @@
     "karma-jasmine": "^1.1.1",
     "karma-remap-istanbul": "^0.6.0",
     "protractor": "^5.2.0",
+    "ts-helpers": "^1.1.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "typescript": "^2.4.2"

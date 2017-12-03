@@ -26,5 +26,4 @@ import { Component } from '@angular/core';
   `,
   styleUrls: ['./barcode.component.scss']
 })
-export class BarcodeComponent {
-}
+export class BarcodeComponent {}

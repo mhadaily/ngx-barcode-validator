@@ -21,21 +21,14 @@
     <button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
-    <button mat-button (click)="isDarkTheme = !isDarkTheme">
-      <mat-icon>settings</mat-icon>
-    </button>
     {{title}}
     <span class="app-toolbar-filler"></span>
     {{fork}}
 
   </mat-toolbar>
 
-
   <div class="app-content">
     <router-outlet></router-outlet>
   </div>
-
 </mat-sidenav-container>
-
-
 <app-fab-menu [isDarkTheme]="isDarkTheme"></app-fab-menu>

@@ -12,7 +12,7 @@ import { Subject } from "rxjs/Subject";
         <div class="flex-item">
           <mat-spinner color="accent" class="app-spinner" *ngIf="spinner"></mat-spinner>
         </div>
-        <div class="flex-item">
+        <div class="flex-item" *ngIf="!spinner">
           <mat-card *ngIf="message"> {{message}}</mat-card>
         </div>
       </div>

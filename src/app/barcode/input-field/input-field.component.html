@@ -5,15 +5,14 @@
   <mat-card class="flex-item" fxFlex="50">
 
     <div class="flex-container" fxLayout="row">
-      <div class="flex-item" fxFlex="90">
-        <mat-input-container #isbn maxlength="50">
-          <mat-placeholder>
-            Barcode Number
-          </mat-placeholder>
-          <mat-hint align="end">
-            {{isbn.characterCount}}
-          </mat-hint>
-        </mat-input-container>
+      <div class="flex-item" fxFlex="100">
+        <form class="example-form">
+          <mat-form-field>
+            <input matInput #isbn maxlength="256" placeholder="Barcode Number">
+            <mat-hint align="start"><strong>Characters: </strong></mat-hint>
+            <mat-hint align="end">{{isbn.characterCount}} / 50</mat-hint>
+          </mat-form-field>
+        </form>
       </div>
       <div class="flex-item" fxFlex="10">
 
@@ -29,7 +28,6 @@
 
 
     <div class="flex-container" fxLayout="column">
-
       <div class="thumbnail flex-item show__sm" *ngIf="resultCode">
         <div class="imgWrapper text-center"><img class="responsive-img" [src]="resultUrl"></div>
         <div class="caption text-center"><h3 class="code">{{resultCode}}</h3></div>

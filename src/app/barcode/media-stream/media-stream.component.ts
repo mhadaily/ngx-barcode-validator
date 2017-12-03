@@ -26,7 +26,8 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
     this.decoderService.onLiveStreamInit();
     this.decoderService.onDecodeProcessed();
     
-    this.decoderService.onDecodeDetected()
+    this.decoderService
+        .onDecodeDetected()
         .then(code => {
           this.lastResult = code;
           this.decoderService.onPlaySound();

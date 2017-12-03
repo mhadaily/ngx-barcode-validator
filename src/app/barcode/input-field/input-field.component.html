@@ -2,23 +2,23 @@
      fxLayoutAlign="center center"
      fxLayoutAlign.xs="start">
 
-  <md-card class="flex-item" fxFlex="50">
+  <mat-card class="flex-item" fxFlex="50">
 
     <div class="flex-container" fxLayout="row">
       <div class="flex-item" fxFlex="90">
-        <md-input #isbn maxlength="50">
-          <md-placeholder>
+        <mat-input-container #isbn maxlength="50">
+          <mat-placeholder>
             Barcode Number
-          </md-placeholder>
-          <md-hint align="end">
+          </mat-placeholder>
+          <mat-hint align="end">
             {{isbn.characterCount}}
-          </md-hint>
-        </md-input>
+          </mat-hint>
+        </mat-input-container>
       </div>
       <div class="flex-item" fxFlex="10">
 
-        <button (click)="onClick()" md-fab>
-          <md-icon>file_upload</md-icon>
+        <button (click)="onClick()" mat-fab>
+          <mat-icon>file_upload</mat-icon>
         </button>
         <input type="file" accept="image/*" capture="camera" #fileInputbox (cancel)="onCancel($event)"
                (change)="onChange($event)"
@@ -33,24 +33,24 @@
       <div class="thumbnail flex-item show__sm" *ngIf="resultCode">
         <div class="imgWrapper text-center"><img class="responsive-img" [src]="resultUrl"></div>
         <div class="caption text-center"><h3 class="code">{{resultCode}}</h3></div>
-        <md-spinner class="smaller app-spinner" *ngIf="!message"></md-spinner>
+        <mat-spinner class="smaller app-spinner" *ngIf="!message"></mat-spinner>
         <div class="flex-item" *ngIf="message">
           {{message}}
         </div>
       </div>
 
-      <md-progress-bar *ngIf="startProgress"
-                       class="app-progress flex-item"
-                       mode="indeterminate"
-                       aria-label="Indeterminate progress-bar example"></md-progress-bar>
+      <mat-progress-bar *ngIf="startProgress"
+                        class="app-progress flex-item"
+                        mode="indeterminate"
+                        aria-label="Indeterminate progress-bar example"></mat-progress-bar>
 
       <div class="flex-item" *ngIf="error">
         {{error}}
       </div>
     </div>
-  </md-card>
+  </mat-card>
 
-  <md-card class="flex-item app-input-section hidden__sm" fxFlex="50" *ngIf="resultCode">
+  <mat-card class="flex-item app-input-section hidden__sm" fxFlex="50" *ngIf="resultCode">
 
     <div class="container">
       <div class="tab"></div>
@@ -76,7 +76,7 @@
             <br/>
             {{resultCode}}
             <br/>
-            <md-spinner class="smaller app-spinner" *ngIf="!message"></md-spinner>
+            <mat-spinner class="smaller app-spinner" *ngIf="!message"></mat-spinner>
             <div class="flex-item" *ngIf="message">
               {{message}}
             </div>
@@ -92,7 +92,7 @@
 
     </div>
 
-  </md-card>
+  </mat-card>
 
 </div>
 

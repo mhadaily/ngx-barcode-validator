@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {trigger, state, style, transition, animate, group, keyframes } from '@angular/animations';
+import { trigger, state, style, transition, animate, group, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-fab-menu',
@@ -12,27 +12,27 @@ import {trigger, state, style, transition, animate, group, keyframes } from '@an
         transform: 'translateY(0px)'
       })),
       transition('void => *', [animate(400, keyframes([
-          style({
-            opacity: 0,
-            transform: 'translateY(-100px)',
-            offset: 0
-          }),
-          style({
-            opacity: 0.5,
-            transform: 'translateY(-50px)',
-            offset: 0.3
-          }),
-          style({
-            opacity: 1,
-            transform: 'translateY(-20px)',
-            offset: 0.8
-          }),
-          style({
-            opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 1
-          })
-        ]))])
+        style({
+          opacity: 0,
+          transform: 'translateY(-100px)',
+          offset: 0
+        }),
+        style({
+          opacity: 0.5,
+          transform: 'translateY(-50px)',
+          offset: 0.3
+        }),
+        style({
+          opacity: 1,
+          transform: 'translateY(-20px)',
+          offset: 0.8
+        }),
+        style({
+          opacity: 1,
+          transform: 'translateY(0px)',
+          offset: 1
+        })
+      ]))])
     ]),
     trigger('list2', [
       state('in', style({
@@ -116,7 +116,7 @@ import {trigger, state, style, transition, animate, group, keyframes } from '@an
     ]),
   ]
 })
-export class FabMenuComponent{
+export class FabMenuComponent {
   @Input() isDarkTheme: boolean;
   active: boolean = false;
   state: string = 'in';

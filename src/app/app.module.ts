@@ -1,11 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
-import { routing } from './app.routing';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {
+  MatAutocompleteModule, MatButtonModule, MatCardModule, MatCommonModule, MatFormFieldModule, MatIconModule,
+  MatInputModule, MatListModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule, MatToolbarModule
+} from "@angular/material";
+
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BarcodeComponent } from './barcode/barcode.component';
@@ -31,17 +40,35 @@ import { InstantSearchComponent } from './barcode/instant-search/instant-search.
     InstantSearchComponent
   ],
   imports: [
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCommonModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatListModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
-    routing,
+    HttpClientModule,
+    AppRoutingModule,
     FlexLayoutModule,
-    MaterialModule.forRoot(),
   ],
-  providers: [BarcodeValidatorService, BarcodeDecoderService],
-  bootstrap: [AppComponent]
+  providers: [
+    BarcodeValidatorService,
+    BarcodeDecoderService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
-export class AppModule {
-}
+
+export class AppModule {}
 

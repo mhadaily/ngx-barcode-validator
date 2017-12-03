@@ -3,9 +3,9 @@ import { AppComponent } from "./app.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BarcodeComponent } from "./barcode/barcode.component";
 import { BARCODE_ROUTE } from "./barcode/barcode.route";
+import { NgModule } from "@angular/core";
 
-
-const APP_ROUTES: Routes = [
+const ROOT_ROUTES: Routes = [
   {
     path: '',
     redirectTo: '/barcode/search',
@@ -37,5 +37,13 @@ const APP_ROUTES: Routes = [
 
 ];
 
-export const routing = RouterModule.forRoot(APP_ROUTES);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(ROOT_ROUTES),
+  ],
+  exports: [
+    RouterModule,
+  ],
+})
+export class AppRoutingModule {}
 

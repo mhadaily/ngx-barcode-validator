@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 /* fallback */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
   src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v19/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
 }
-
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -26,25 +26,6 @@
 body {
   margin: 0;
   padding: 0;
-}
-
-@import '~@angular/material/core/theming/all-theme';
-@include md-core();
-$primary: md-palette($md-deep-purple);
-$accent: md-palette($md-amber, A200, A100, A400);
-
-$theme: md-light-theme($primary, $accent);
-
-@include angular-material-theme($theme);
-
-.m2app-dark {
-  $dark-primary: md-palette($md-pink, 700, 500, 900);
-  $dark-accent: md-palette($md-blue-grey, A200, A100, A400);
-  $dark-warn: md-palette($md-deep-orange);
-
-  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
-
-  @include angular-material-theme($dark-theme);
 }
 
 md-sidenav-layout.m2app-dark {

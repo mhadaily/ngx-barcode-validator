@@ -34,7 +34,8 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
         })
         .catch((err) => this.error = `Something Wrong: ${err}`);
     
-    this.barcodeValidator.doSearchbyCode(this.code$)
+    this.barcodeValidator
+        .doSearchbyCode(this.code$)
         .subscribe(
           res => this.message = res,
           err => {

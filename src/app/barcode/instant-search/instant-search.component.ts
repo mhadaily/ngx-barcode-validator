@@ -1,11 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { Subject } from "rxjs/Subject";
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-instant-search',
-  templateUrl: './instant-search.component.html'
+  template: `
+    <mat-card>
+      <input class="instantInput" (input)="code$.next($event.target.value)" (keydown)="onChange()"
+             placeholder="Type your barcode number">
+      <div class="flex-container text-center" fxLayout="row" fxLayoutAlign="center center">
+        <div class="flex-item">
+          <mat-spinner color="accent" class="app-spinner" *ngIf="spinner"></mat-spinner>
+        </div>
+        <div class="flex-item">
+          <mat-card *ngIf="message"> {{message}}</mat-card>
+        </div>
+      </div>
+    
+    </mat-card>
+  `
 })
 export class InstantSearchComponent implements OnInit {
   
@@ -18,7 +31,8 @@ export class InstantSearchComponent implements OnInit {
   constructor(private barcodeValidator: BarcodeValidatorService) {}
   
   ngOnInit() {
-    this.barcodeValidator.doSearchbyCode(this.code$)
+    this.barcodeValidator
+        .doSearchbyCode(this.code$)
         .subscribe(
           res => {
             this.spinner = false;

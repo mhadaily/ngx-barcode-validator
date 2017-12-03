@@ -3,7 +3,6 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { BarcodeValidatorService } from "../../services/barcode-validator.service";
 import { BarcodeDecoderService } from "../../services/barcode-decoder.service";
 import { Subject } from "rxjs/Subject";
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-input-field',

@@ -1,41 +1,41 @@
-<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
+<mat-sidenav-container [class.m2app-dark]="isDarkTheme">
 
-  <md-sidenav #sidenav mode="side">
+  <mat-sidenav #sidenav mode="side">
     <div class="flex-container" fxLayout="column">
-      <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode']">Homepage
+      <button class="flex-item" mat-button [routerLinkActive]="['active']" [routerLink]="['barcode']">Homepage
       </button>
       <div class="flex-item">
         <hr>
       </div>
-      <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode/media']">Media Stream
+      <button class="flex-item" mat-button [routerLinkActive]="['active']" [routerLink]="['barcode/media']">Media Stream
       </button>
       <div class="flex-item">
         <hr>
       </div>
-      <button class="flex-item" md-button [routerLinkActive]="['active']" [routerLink]="['barcode/field']">Input File
+      <button class="flex-item" mat-button [routerLinkActive]="['active']" [routerLink]="['barcode/field']">Input File
       </button>
     </div>
-  </md-sidenav>
-  <md-toolbar color="primary">
+  </mat-sidenav>
+  <mat-toolbar color="primary">
 
     <button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
-    <button md-button (click)="isDarkTheme = !isDarkTheme">
-      <md-icon>settings</md-icon>
+    <button mat-button (click)="isDarkTheme = !isDarkTheme">
+      <mat-icon>settings</mat-icon>
     </button>
     {{title}}
     <span class="app-toolbar-filler"></span>
     {{fork}}
 
-  </md-toolbar>
+  </mat-toolbar>
 
 
   <div class="app-content">
     <router-outlet></router-outlet>
   </div>
 
-</md-sidenav-layout>
+</mat-sidenav-container>
 
 
 <app-fab-menu [isDarkTheme]="isDarkTheme"></app-fab-menu>

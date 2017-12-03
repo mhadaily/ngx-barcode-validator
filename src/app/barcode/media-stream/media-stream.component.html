@@ -2,7 +2,7 @@
      fxLayoutAlign="center center"
      fxLayoutAlign.xs="start">
 
-  <md-card class="flex-item" fxFlex="50">
+  <mat-card class="flex-item" fxFlex="50">
     <p>Notice: You must allow to use your webcam. This Option only works on IE11+ and may not work with Android browser
       older version. Alternatively use upload file option.</p>
     <div id="interactive" class="viewport clearfix" #interactive></div>
@@ -13,9 +13,9 @@
       <p *ngIf="!message">Searching...</p>
       <p *ngIf="message">{{message}}</p>
     </div>
-  </md-card>
+  </mat-card>
 
-  <md-card class="flex-item app-input-section hidden__sm" fxFlex="50" *ngIf="lastResult">
+  <mat-card class="flex-item app-input-section hidden__sm" fxFlex="50" *ngIf="lastResult">
 
     <div class="ticket">
       <div class="datas">
@@ -30,7 +30,7 @@
         </a>
       </div>
     </div>
-  </md-card>
+  </mat-card>
 </div>
 
 

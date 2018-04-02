@@ -1,9 +1,9 @@
-import { RouterModule, Routes } from "@angular/router";
-import { NgModule } from "@angular/core";
-import { MediaStreamComponent } from "./media-stream/media-stream.component";
-import { InputFieldComponent } from "./input-field/input-field.component";
-import { InstantSearchComponent } from "./instant-search/instant-search.component";
-import { BarcodeComponent } from "./barcode.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { MediaStreamComponent } from './media-stream/media-stream.component';
+import { InputFieldComponent } from './input-field/input-field.component';
+import { InstantSearchComponent } from './instant-search/instant-search.component';
+import { BarcodeComponent } from './barcode.component';
 
 export const BARCODE_ROUTE: Routes = [
   {
@@ -13,25 +13,25 @@ export const BARCODE_ROUTE: Routes = [
       {
         path: '',
         redirectTo: '/barcode/upload',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'upload',
         component: InstantSearchComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'media',
         component: MediaStreamComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'field',
         component: InputFieldComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
-import { RouterModule, Routes } from "@angular/router";
-import { AppComponent } from "./app.component";
-import { NotFoundComponent } from "./not-found/not-found.component";
-import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NgModule } from '@angular/core';
 
 const ROOT_ROUTES: Routes = [
   {
@@ -15,13 +15,13 @@ const ROOT_ROUTES: Routes = [
   },
   {
     path: '404',
-    component: NotFoundComponent
+    component: NotFoundComponent,
   },
   {
     path: '**',
     redirectTo: '404',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 
 ];
 

@@ -6,7 +6,7 @@ import { BarcodeValidatorService } from './barcode-validator.service';
 describe('BarcodeValidatorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BarcodeValidatorService]
+      providers: [BarcodeValidatorService],
     });
   });
 

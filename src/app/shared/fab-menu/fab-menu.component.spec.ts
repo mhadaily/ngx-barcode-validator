@@ -11,9 +11,9 @@ describe('FabMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FabMenuComponent ]
+      declarations: [FabMenuComponent],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

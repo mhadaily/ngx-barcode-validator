@@ -24,6 +24,6 @@ import { Component } from '@angular/core';
       <router-outlet></router-outlet>
     </mat-card>
   `,
-  styleUrls: ['./barcode.component.scss']
+  styleUrls: ['./barcode.component.scss'],
 })
 export class BarcodeComponent {}

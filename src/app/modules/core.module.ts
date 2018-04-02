@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BarcodeDecoderService } from "../services/barcode-decoder.service";
-import { BarcodeValidatorService } from "../services/barcode-validator.service";
-import { SharedModule } from "./shared.module";
+import { BarcodeDecoderService } from '../services/barcode-decoder.service';
+import { BarcodeValidatorService } from '../services/barcode-validator.service';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   imports: [
@@ -9,11 +9,11 @@ import { SharedModule } from "./shared.module";
   ],
   providers: [
     BarcodeValidatorService,
-    BarcodeDecoderService
+    BarcodeDecoderService,
   ],
   exports: [
     SharedModule,
-  ]
+  ],
 })
 
 export class CoreModule {}

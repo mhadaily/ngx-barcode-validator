@@ -3,9 +3,9 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styles: []
+  styles: [],
 })
-export class ToolbarComponent{
+export class ToolbarComponent {
   @Input() title: string;
- 
+
 }

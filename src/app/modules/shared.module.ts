@@ -10,9 +10,9 @@ import {
   MatProgressSpinnerModule,
   MatSelectModule, MatSidenavModule,
   MatSnackBarModule,
-  MatToolbarModule
-} from "@angular/material";
-import { FlexLayoutModule } from "@angular/flex-layout";
+  MatToolbarModule,
+} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // modules
 const SHARED_COMPONENTS = [];

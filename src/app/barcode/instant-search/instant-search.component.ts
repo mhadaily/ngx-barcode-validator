@@ -16,7 +16,6 @@ import { Subject } from 'rxjs/Subject';
           <mat-card *ngIf="message"> {{message}}</mat-card>
         </div>
       </div>
-    
     </mat-card>
   `,
 })

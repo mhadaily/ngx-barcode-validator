@@ -6,18 +6,12 @@ import { Component } from '@angular/core';
     <mat-card class="text-center">
       <h3 class="text-center">Barcode Scanner</h3>
       <p>User Instant Search or Alternatively you can upload your barcode or scan via webcam/camera</p>
-      <div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
-        <div class="flex-item" [routerLink]="['field']">
-          <button mat-fab>
-            <mat-icon>file_upload</mat-icon>
-          </button>
-        </div>
-        <div class="flex-item" [routerLink]="['media']">
-          <button mat-fab>
-            <mat-icon>camera</mat-icon>
-          </button>
-        </div>
-      </div>
+      <button mat-fab [routerLink]="['field']">
+        <mat-icon>file_upload</mat-icon>
+      </button>
+      <button mat-fab [routerLink]="['media']">
+        <mat-icon>camera</mat-icon>
+      </button>
     </mat-card>
     
     <mat-card>

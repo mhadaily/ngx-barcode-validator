@@ -12,7 +12,6 @@ import {
   MatSnackBarModule,
   MatToolbarModule,
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 // modules
 const SHARED_COMPONENTS = [];
@@ -38,7 +37,6 @@ const SHARED_MODULES: any[] = [
   MatListModule,
   FormsModule,
   HttpClientModule,
-  FlexLayoutModule,
 ];
 
 const PROVIDERS: any[] = [];

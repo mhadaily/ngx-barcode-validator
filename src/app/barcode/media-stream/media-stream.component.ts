@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterContentInit } from '@angular/core';
 import { BarcodeDecoderService } from '../../services/barcode-decoder.service';
 import { BarcodeValidatorService } from '../../services/barcode-validator.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BarcodeValidatorService } from '../../services/barcode-validator.service';
 import { BarcodeDecoderService } from '../../services/barcode-decoder.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-input-field',

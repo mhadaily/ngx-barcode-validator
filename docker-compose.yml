@@ -11,6 +11,7 @@ services:
       - '/gx-barcode-scanner/node_modules'
     ports:
       - '4200:4200'
+      - '49153:49153'
     environment:
       NODE_ENV: development
 

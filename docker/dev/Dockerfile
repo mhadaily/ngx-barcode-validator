@@ -13,12 +13,14 @@ ENV PATH /ngx-barcode-scanner/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY ./package.json /ngx-barcode-scanner/package.json
-RUN npm --version
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 RUN npm install -g @angular/cli@latest
-RUN npm install --unsafe-perm=true
+RUN npm i
 
 # add app
 COPY . /ngx-barcode-scanner
 
 # start app
 CMD ng serve --aot -H 0.0.0.0
+
+EXPOSE 49153

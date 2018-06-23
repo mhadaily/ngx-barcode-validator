@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  ngx-barcode-scanner:
+    container_name: ngx-barcode-scanner
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - '.:/gx-barcode-scanner'
+      - '/gx-barcode-scanner/node_modules'
+    ports:
+      - '4200:4200'
+    environment:
+      NODE_ENV: development
+
+  ngx-barcode-scanner-prod:
+    container_name: ngx-barcode-scanner-prod
+    build:
+      context: .
+      dockerfile: docker/prod/Dockerfile
+    ports:
+      - '80:80'
+    environment:
+      NODE_ENV: production

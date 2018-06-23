@@ -13,7 +13,8 @@
     "test:ci": "ng test --browser ChromeHeadlessCI --code-coverage=true --single-run=true --watch=false",
     "e2e": "protractor",
     "dev": "docker-compose up ngx-barcode-scanner",
-    "prod": "docker-compose up -d ngx-barcode-scanner-prod"
+    "prod": "docker-compose up ngx-barcode-scanner-prod",
+    "prod:ci": "docker-compose up -d ngx-barcode-scanner-prod"
   },
   "private": true,
   "dependencies": {

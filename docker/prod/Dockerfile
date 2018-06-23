@@ -2,7 +2,7 @@
 ### build environment ###
 #########################
 # base image
-FROM node:10-alpine as builder
+FROM node:10.5-alpine as builder
 
 # set working directory
 RUN mkdir /ngx-barcode-scanner
@@ -21,7 +21,7 @@ RUN npm i --suppess-warnings
 COPY . /ngx-barcode-scanner
 
 # run tests
-RUN ng test --watch=false
+#RUN ng test:ci
 
 # generate build
 RUN npm run build

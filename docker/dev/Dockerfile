@@ -1,5 +1,5 @@
 # base image
-FROM node:10-alpine
+FROM node:10.5-alpine
 
 # set working directory
 # Create a directory where our app will be placed. This might not be necessary
@@ -20,7 +20,8 @@ RUN npm i
 # add app
 COPY . /ngx-barcode-scanner
 
-# start app
-CMD ng serve --aot -H 0.0.0.0
-
 EXPOSE 49153
+EXPOSE 4200
+
+# start app
+CMD ng serve --aot --host 0.0.0.0

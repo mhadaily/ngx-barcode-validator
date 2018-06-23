@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: docker/dev/Dockerfile
     volumes:
-      - '.:/gx-barcode-scanner'
-      - '/gx-barcode-scanner/node_modules'
+      - '.:/ngx-barcode-scanner'
+      - '/ngx-barcode-scanner/node_modules'
     ports:
       - '4200:4200'
       - '49153:49153'
